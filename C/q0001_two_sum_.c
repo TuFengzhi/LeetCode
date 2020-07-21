@@ -24,10 +24,7 @@ int *twoSum(int *nums, int numsSize, int target)
     return Nums;
 }
 
-// CTEST(suite1, test2)
-// {
-//     ASSERT_EQUAL(1, 2);
-// }
+#if defined(Q0001)
 
 CTEST(Q0001TwoSumTest, Case1)
 {
@@ -41,3 +38,5 @@ CTEST(Q0001TwoSumTest, Case1)
 
     free(result);
 }
+
+#endif
