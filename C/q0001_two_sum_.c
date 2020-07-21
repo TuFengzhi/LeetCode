@@ -1,3 +1,4 @@
+#include "ctest.h"
 #include "leetcode.h"
 
 /**
@@ -23,13 +24,20 @@ int *twoSum(int *nums, int numsSize, int target)
     return Nums;
 }
 
-void q0001TwoSumTest(void)
+// CTEST(suite1, test2)
+// {
+//     ASSERT_EQUAL(1, 2);
+// }
+
+CTEST(Q0001TwoSumTest, Case1)
 {
     int32_t numsSize = 4;
     int32_t nums[] = {1, 2, 5, 7};
     int32_t target = 9;
 
     int32_t *result = twoSum(nums, numsSize, target);
-    printf("Result: %d %d\n", result[0], result[1]);
+    ASSERT_EQUAL(result[0], 1);
+    ASSERT_EQUAL(result[1], 3);
+
     free(result);
 }

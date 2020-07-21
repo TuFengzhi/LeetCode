@@ -1,7 +1,13 @@
-#include "leetcode.h"
+#define CTEST_MAIN
+// #define CTEST_SEGFAULT
+#define CTEST_NO_COLORS
+// #define CTEST_COLOR_OK
 
-int32_t main(int argc, char *argv[])
+#include "ctest.h"
+
+int main(int argc, const char *argv[])
 {
-    leetcodeProblomList(1);
-    return 0;
+    int result = ctest_main(argc, argv);
+
+    return result;
 }

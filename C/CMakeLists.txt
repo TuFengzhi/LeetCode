@@ -6,6 +6,7 @@ aux_source_directory(. DIRSRCS)
 
 # Add header file include directories
 include_directories("${PROJECT_SOURCE_DIR}")
+include_directories("${PROJECT_SOURCE_DIR}/include")
 
 # Target
 add_executable(leetcode ${DIRSRCS})
