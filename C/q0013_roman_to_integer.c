@@ -84,7 +84,7 @@ int romanToInt(char *s)
     return value_sum;
 }
 
-#if defined(Q0013) || 1
+#if defined(Q0013)
 
 CTEST(Q0013RomanToInt, Case1)
 {

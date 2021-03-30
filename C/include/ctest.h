@@ -50,7 +50,7 @@ typedef void (*ctest_teardown_func)(void *);
 #define CTEST_IMPL_DIAG_POP()
 #endif
 
-CTEST_IMPL_DIAG_PUSH_IGNORED(strict - prototypes)
+CTEST_IMPL_DIAG_PUSH_IGNORED(strict-prototypes)
 
 struct ctest
 {
@@ -286,7 +286,7 @@ void CTEST_LOG(const char *fmt, ...)
     msg_end();
 }
 
-CTEST_IMPL_DIAG_PUSH_IGNORED(missing - noreturn)
+CTEST_IMPL_DIAG_PUSH_IGNORED(missing-noreturn)
 
 void CTEST_ERR(const char *fmt, ...)
 {
