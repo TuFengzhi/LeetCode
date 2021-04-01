@@ -31,7 +31,7 @@ struct ListNode *deleteDuplicates(struct ListNode *head)
     return head;
 }
 
-#if defined(Q0083) || 1
+#if defined(Q0083)
 
 CTEST(Q0083deleteDuplicates, Case1)
 {

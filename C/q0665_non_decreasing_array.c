@@ -39,7 +39,7 @@ bool checkPossibility(int *nums, int numsSize)
     return result;
 }
 
-#if defined(Q0665) || 1
+#if defined(Q0665)
 
 CTEST(Q0665CheckPossibility, Case1)
 {
