@@ -7,17 +7,16 @@
 
 struct ListNode *deleteDuplicates(struct ListNode *head)
 {
-    if (head == NULL)
+    if (!head)
     {
         return head;
     }
 
     struct ListNode *head_itr = head;
-    int last_val = head->val;
 
-    while (head_itr->next != NULL)
+    while (head_itr->next)
     {
-        if (head_itr->next->val == last_val)
+        if (head_itr->val == head_itr->next->val)
         {
             // Remove duplicates
             head_itr->next = head_itr->next->next;
@@ -26,7 +25,6 @@ struct ListNode *deleteDuplicates(struct ListNode *head)
         {
             // Move to next node
             head_itr = head_itr->next;
-            last_val = head_itr->val;
         }
     }
 
