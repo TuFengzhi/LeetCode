@@ -7,8 +7,13 @@
 #include <stdlib.h>
 #include <string.h>
 
-void leetcodeProblomList(int32_t problem_number);
-
-void q0001TwoSumTest(void);
+/**
+ * Definition for singly-linked list.
+ */
+struct ListNode
+{
+    int val;
+    struct ListNode *next;
+};
 
 #endif
