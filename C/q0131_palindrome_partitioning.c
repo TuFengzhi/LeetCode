@@ -1,20 +1,6 @@
 #include "ctest.h"
 #include "leetcode.h"
 
-int IsPalindrome(char *s)
-{
-    int s_s = strlen(s);
-    int half_s_s = s_s / 2;
-    for (int i = 0; i < half_s_s; i++)
-    {
-        if (s[i] != s[s_s - i - 1])
-        {
-            return 0;
-        }
-    }
-    return 1;
-}
-
 /**
  * Return an array of arrays of size *returnSize.
  * The sizes of the arrays are returned as *returnColumnSizes array.
@@ -51,7 +37,8 @@ char ***partition(char *s, int *returnSize, int **returnColumnSizes)
             strcpy(current, last_ret[i][returnSize - 1]);
             current[last_last_size] = current_char;
             current[last_last_size + 1] = '\0';
-            int is_p = IsPalindrome(current);
+            size_t len = strlen(current);
+            int is_p = IsPalindrome(current, len);
             printf("TEST\n");
         }
         printf("TEST\n");

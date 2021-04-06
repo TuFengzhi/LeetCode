@@ -16,4 +16,6 @@ struct ListNode
     struct ListNode *next;
 };
 
+int IsPalindrome(char *s, size_t len);
+
 #endif
