@@ -7,30 +7,23 @@
 
 struct ListNode *removeNthFromEnd(struct ListNode *head, int n)
 {
-    int len = 0;
-    struct ListNode *head_itr = head;
-    while (head_itr)
-    {
-        head_itr = head_itr->next;
-        len++;
-    }
+    struct ListNode dummyHead;
+    dummyHead.next = head;
+    struct ListNode *slow = &dummyHead;
+    struct ListNode *fast = &dummyHead;
 
-    n = len - n;
-    head_itr = head;
-    for (int i = 0; i < n - 1; i++)
+    for (int i = 0; i < n + 1; i++)
     {
-        head_itr = head_itr->next;
+        fast = fast->next;
     }
-    if (n == 0)
+    while (fast != NULL)
     {
-        head = head->next;
+        fast = fast->next;
+        slow = slow->next;
     }
-    else
-    {
-        head_itr->next = head_itr->next->next;
-    }
+    slow->next = slow->next->next;
 
-    return head;
+    return dummyHead.next;
 }
 
 #if defined(Q0019)
@@ -51,6 +44,14 @@ CTEST(Q0019removeNthFromEnd, Case1)
     }
 
     struct ListNode *ret = removeNthFromEnd(l1.next, 5);
+
+    printf("\n");
+    while (ret != NULL)
+    {
+        printf("%d ", ret->val);
+        ret = ret->next;
+    }
+    printf("\n");
 
 #undef l1_len
 }

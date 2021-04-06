@@ -60,8 +60,6 @@ char ***partition(char *s, int *returnSize, int **returnColumnSizes)
     return ret;
 }
 
-#define Q0131
-
 #if defined(Q0131)
 
 CTEST(Q0131PalindromePartitioning, Case1)
