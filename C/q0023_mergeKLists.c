@@ -69,11 +69,11 @@ struct ListNode *mergeKLists(struct ListNode **lists, int listsSize)
         return *lists;
     }
 
-    struct ListNode *ret = MergeTwoLists(lists[0], lists[1]);
-    for (int i = 2; i < listsSize; i++)
-    {
-        ret = MergeTwoLists(ret, lists[i]);
-    }
+    struct ListNode *left = mergeKLists(lists, listsSize / 2);
+    struct ListNode *right =
+        mergeKLists(lists + listsSize / 2, listsSize - listsSize / 2);
+    struct ListNode *ret = MergeTwoLists(left, right);
+
     return ret;
 }
 
