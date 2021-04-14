@@ -17,44 +17,25 @@
  * };
  */
 
+bool isValidBSTWithMaxMin(struct TreeNode *root, long int max_val,
+                          long int min_val)
+{
+    if (root == NULL)
+        return true;
+
+    if ((root->val >= max_val) || (root->val <= min_val))
+        return false;
+
+    return (isValidBSTWithMaxMin(root->left, root->val, min_val) &&
+            isValidBSTWithMaxMin(root->right, max_val, root->val));
+}
+
 bool isValidBST(struct TreeNode *root)
 {
     if (root == NULL)
         return true;
 
-    if (root->left)
-    {
-        if (isValidBST(root->left))
-        {
-            struct TreeNode *left_right = root->left;
-            while (left_right->right)
-                left_right = left_right->right;
-            if (root->val <= left_right->val)
-                return false;
-        }
-        else
-        {
-            return false;
-        }
-    }
-
-    if (root->right)
-    {
-        if (isValidBST(root->right) && (root->val < root->right->val))
-        {
-            struct TreeNode *right_left = root->right;
-            while (right_left->left)
-                right_left = right_left->left;
-            if (root->val >= right_left->val)
-                return false;
-        }
-        else
-        {
-            return false;
-        }
-    }
-
-    return true;
+    return isValidBSTWithMaxMin(root, LONG_MAX, LONG_MIN);
 }
 
 #if defined(Q0098)
