@@ -16,6 +16,14 @@ struct ListNode
     struct ListNode *next;
 };
 
+// Definition for a binary tree node.
+struct TreeNode
+{
+    int val;
+    struct TreeNode *left;
+    struct TreeNode *right;
+};
+
 int IsPalindrome(char *s, size_t len);
 
 #endif
