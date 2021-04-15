@@ -4,53 +4,99 @@
 #include "ctest.h"
 #include "leetcode.h"
 
-size_t Binary2Decimal(const char *ch)
-{
-    size_t ret = 0;
-    size_t len = strlen(ch);
-    for (int i = len - 1; i >= 0; i--)
-    {
-        ret += ch[i] == '1' ? 1 << (len - i - 1) : 0;
-    }
-    return ret;
-}
-
-char *Decimal2Binary(int decimal)
-{
-    int total_size = 0, cur = decimal;
-    while (cur)
-    {
-        total_size++;
-        cur /= 2;
-    }
-    char *ret = (char *)malloc(total_size + 1);
-
-    ret[total_size] = '\0';
-
-    for (int i = total_size - 1; i >= 0; i--)
-    {
-        ret[i] = decimal % 2 == 0 ? '0' : '1';
-        decimal /= 2;
-    }
-
-    return ret;
-}
-
 char *addBinary(char *a, char *b)
 {
-    size_t ai = Binary2Decimal(a);
-    size_t bi = Binary2Decimal(b);
-    int ret = ai + bi;
+    size_t al = strlen(a);
+    size_t bl = strlen(b);
+    char *long_str = NULL, *short_str = NULL;
+    int long_len = 0, short_len = 0;
+    int carry = 0;
 
-    return Decimal2Binary(ret);
+    if (al > bl)
+    {
+        long_str = a;
+        short_str = b;
+        long_len = al;
+        short_len = bl;
+    }
+    else
+    {
+        long_str = b;
+        short_str = a;
+        long_len = bl;
+        short_len = al;
+    }
+    int i = 0;
+    for (; i < short_len; i++)
+    {
+        if ((short_str[short_len - i - 1] == '1') && (carry == 1))
+        {
+            carry == 1;
+        }
+        else if ((short_str[short_len - i - 1] == '1') || (carry == 1))
+        {
+            // printf("%c", long_str[long_len - i - 1]);
+            if (long_str[long_len - i - 1] == '1')
+            {
+                long_str[long_len - i - 1] = '0';
+                carry = 1;
+            }
+            else
+            {
+                long_str[long_len - i - 1] = '1';
+                carry = 0;
+            }
+        }
+    }
+    while (carry)
+    {
+        if (i == long_len)
+        {
+            break;
+        }
+        if (long_str[long_len - i - 1] == '1')
+        {
+            long_str[long_len - i - 1] = '0';
+            carry = 1;
+        }
+        else
+        {
+            long_str[long_len - i - 1] = '1';
+            carry = 0;
+        }
+        i++;
+    }
+    if (carry)
+    {
+        // Add One More Bit
+        // printf("Carry On\n");
+        char *ret = (char *)malloc(long_len + 2);
+        ret[0] = '1';
+        strncpy(ret + 1, long_str, long_len);
+        ret[long_len + 1] = '\0';
+        long_str = ret;
+    }
+    else
+    {
+        char *ret = (char *)malloc(long_len + 1);
+        strncpy(ret, long_str, long_len);
+        ret[long_len] = '\0';
+        long_str = ret;
+    }
+
+    return long_str;
 }
 
-#if defined(Q0067) || 1
+#if defined(Q0067)
 
 CTEST(Q0067addBinary, Case1)
 {
-    char *ret = addBinary("1", "11");
+    char a[] = "1010";
+    char b[] = "1011";
+    char *ret = addBinary(a, b);
+    char *ref = "10101";
     printf("\nRet: %s\n", ret);
+    printf("Ref: %s\n", ref);
 }
 
 #endif
