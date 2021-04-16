@@ -31,7 +31,7 @@ char *addBinary(char *a, char *b)
     {
         if ((short_str[short_len - i - 1] == '1') && (carry == 1))
         {
-            carry == 1;
+            carry = 1;
         }
         else if ((short_str[short_len - i - 1] == '1') || (carry == 1))
         {
