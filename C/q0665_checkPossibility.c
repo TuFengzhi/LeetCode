@@ -8,6 +8,9 @@
 #include "ctest.h"
 #include "leetcode.h"
 
+#define max(a, b) (((a) > (b)) ? (a) : (b))
+#define min(a, b) (((a) < (b)) ? (a) : (b))
+
 bool checkPossibility(int *nums, int numsSize)
 {
     if (numsSize == 0 || numsSize == 1)
@@ -15,35 +18,37 @@ bool checkPossibility(int *nums, int numsSize)
         return true;
     }
 
-    bool result = true;
-    bool one_time = true;
+    int times = 0;
 
-    if (nums[0] > nums[1])
-    {
-        nums[0] = nums[1];
-        one_time = false;
-    }
+    int new_array[numsSize + 2];
+    memcpy(new_array + 1, nums, numsSize * sizeof(int));
+    new_array[0] = min(nums[0], nums[1]);
+    new_array[numsSize + 1] = max(nums[numsSize - 1], nums[numsSize - 2]);
 
-    for (int i = 1; i < numsSize - 1; i++)
+    for (int i = 1; i < numsSize; i++)
     {
-        if (nums[i - 1] > nums[i])
+        if (new_array[i] > new_array[i + 1])
         {
-            if (!one_time)
+            times++;
+            if (((new_array[i - 1] <= new_array[i + 1]) &&
+                 (new_array[i + 1] <= new_array[i + 2])) ||
+                (new_array[i] <= new_array[i + 2]))
             {
-                return false;
+                i++;
             }
             else
             {
-                if (nums[i + 1] < nums[i - 1])
-                {
-                    return false;
-                }
-                one_time = false;
+                return false;
             }
         }
     }
 
-    return result;
+    if (times < 2)
+    {
+        return true;
+    }
+
+    return false;
 }
 
 #if defined(Q0665)
@@ -70,6 +75,12 @@ CTEST(Q0665CheckPossibility, Case4)
 {
     int arr[] = {3, 4, 2, 3};
     ASSERT_EQUAL(false, checkPossibility(arr, 4));
+}
+
+CTEST(Q0665CheckPossibility, Case5)
+{
+    int arr[] = {5, 7, 1, 8};
+    ASSERT_EQUAL(true, checkPossibility(arr, 4));
 }
 
 #endif
