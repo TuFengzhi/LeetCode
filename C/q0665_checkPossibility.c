@@ -11,7 +11,7 @@
 #define max(a, b) (((a) > (b)) ? (a) : (b))
 #define min(a, b) (((a) < (b)) ? (a) : (b))
 
-bool checkPossibility(int *nums, int numsSize)
+bool checkPossibilityObsolete1(int *nums, int numsSize)
 {
     if (numsSize == 0 || numsSize == 1)
     {
@@ -39,6 +39,39 @@ bool checkPossibility(int *nums, int numsSize)
             else
             {
                 return false;
+            }
+        }
+    }
+
+    if (times < 2)
+    {
+        return true;
+    }
+
+    return false;
+}
+
+bool checkPossibility(int *nums, int numsSize)
+{
+    if (numsSize == 0 || numsSize == 1)
+    {
+        return true;
+    }
+
+    int times = 0;
+
+    for (int i = 0; i < numsSize - 1; i++)
+    {
+        if (nums[i] > nums[i + 1])
+        {
+            times++;
+            if ((i > 0) && (nums[i + 1] < nums[i - 1]))
+            {
+                nums[i + 1] = nums[i];
+            }
+            else
+            {
+                nums[i] = nums[i + 1];
             }
         }
     }
