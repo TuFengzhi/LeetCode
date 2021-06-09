@@ -1,6 +1,8 @@
 #ifndef CPP_LEETCODE_H
 #define CPP_LEETCODE_H
 
+#include "build/googletest-src/googletest/include/gtest/gtest.h"
+
 #include <iostream>
 
 struct TreeNode
