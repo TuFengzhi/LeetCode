@@ -4,6 +4,8 @@
 #include "build/googletest-src/googletest/include/gtest/gtest.h"
 
 #include <iostream>
+#include <stack>
+#include <vector>
 
 struct TreeNode
 {
