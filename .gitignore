@@ -56,3 +56,4 @@ dkms.conf
 
 # CMake Files
 C/build/
+C++/build/

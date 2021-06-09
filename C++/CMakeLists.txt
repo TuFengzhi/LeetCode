@@ -1,37 +1,43 @@
 cmake_minimum_required(VERSION 3.0.0)
-project(algorithm VERSION 0.1.0)
+project(leetcode VERSION 0.1.0)
 
-# Add the source in project root directory
+configure_file(CMakeLists.txt.in googletest-download/CMakeLists.txt)
+execute_process(COMMAND ${CMAKE_COMMAND} -G "${CMAKE_GENERATOR}" .
+  RESULT_VARIABLE result
+  WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/googletest-download )
+if(result)
+  message(FATAL_ERROR "CMake step for googletest failed: ${result}")
+endif()
+execute_process(COMMAND ${CMAKE_COMMAND} --build .
+  RESULT_VARIABLE result
+  WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/googletest-download )
+if(result)
+  message(FATAL_ERROR "Build step for googletest failed: ${result}")
+endif()
+
+# Prevent overriding the parent project's compiler/linker
+# settings on Windows
+set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+
+# Add googletest directly to our build. This defines
+# the gtest and gtest_main targets.
+add_subdirectory(${CMAKE_BINARY_DIR}/googletest-src
+                 ${CMAKE_BINARY_DIR}/googletest-build
+                 EXCLUDE_FROM_ALL)
+
+# The gtest/gtest_main targets carry header search path
+# dependencies automatically when using CMake 2.8.11 or
+# later. Otherwise we have to add them here ourselves.
+if (CMAKE_VERSION VERSION_LESS 2.8.11)
+  include_directories("${gtest_SOURCE_DIR}/include")
+endif()
+
+# Now simply link against gtest or gtest_main as mytest
 aux_source_directory(. DIRSRCS)
+add_executable(leetcode ${DIRSRCS})
+target_link_libraries(leetcode gtest_main)
+#add_test(mytest example_test COMMAND mytest)
 
 # Add header file include directories
 include_directories("${PROJECT_SOURCE_DIR}")
-include_directories("${PROJECT_SOURCE_DIR}/algorithm_utils/include")
-include_directories("${PROJECT_SOURCE_DIR}/compensation_algorithm/include")
-include_directories("${PROJECT_SOURCE_DIR}/echo_cancellation_algorithm/include")
-include_directories("${PROJECT_SOURCE_DIR}/interface/include")
-include_directories("${PROJECT_SOURCE_DIR}/multiple_microphone_source_separation_algorithm/include")
-include_directories("${PROJECT_SOURCE_DIR}/noise_canceling_algorithm/include")
-include_directories("${PROJECT_SOURCE_DIR}/unittest/include")
-
-add_compile_definitions(_INCUS_GENERAL_EDITION)
-add_compile_definitions(_INCUS_MODULE_TEST_ENABLED)
-add_compile_definitions(_INCUS_ALGORITHM_MAIN)
-add_compile_definitions(_INCUS_UNIT_TEST_ENABLED)
-
-aux_source_directory("${PROJECT_SOURCE_DIR}/algorithm_utils" algorithm_utils)
-aux_source_directory("${PROJECT_SOURCE_DIR}/compensation_algorithm" algorithm_utils)
-aux_source_directory("${PROJECT_SOURCE_DIR}/echo_cancellation_algorithm" echo_cancellation_algorithm)
-aux_source_directory("${PROJECT_SOURCE_DIR}/interface" interface)
-aux_source_directory("${PROJECT_SOURCE_DIR}/multiple_microphone_source_separation_algorithm" multiple_microphone_source_separation_algorithm)
-aux_source_directory("${PROJECT_SOURCE_DIR}/noise_canceling_algorithm" noise_canceling_algorithm)
-aux_source_directory("${PROJECT_SOURCE_DIR}/unittest" unittest)
-
-# Target
-add_executable(algorithm ${DIRSRCS} ${algorithm_utils} ${compensation_algorithm} ${echo_cancellation_algorithm} ${interface} ${multiple_microphone_source_separation_algorithm} ${noise_canceling_algorithm} ${unittest})
-
-target_link_libraries(algorithm)
-
-set(CPACK_PROJECT_NAME ${PROJECT_NAME})
-set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
-include(CPack)
+include_directories("${PROJECT_SOURCE_DIR}/include")
