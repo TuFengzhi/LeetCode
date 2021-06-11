@@ -11,5 +11,43 @@ using namespace std;
 class Solution
 {
   public:
-    bool isBalanced(TreeNode *root) {}
+    bool helper(TreeNode *root, int *ret_height)
+    {
+        if (!root)
+        {
+            *ret_height = 0;
+            return true;
+        }
+        int left_height = 0;
+        int right_height = 0;
+        if (helper(root->left, &left_height) &&
+            helper(root->right, &right_height))
+        {
+            if (abs(left_height - right_height) <= 1)
+            {
+                *ret_height = max(left_height, right_height) + 1;
+                return true;
+            }
+        }
+
+        return false;
+    }
+    bool isBalanced(TreeNode *root)
+    {
+        if (!root)
+            return true;
+
+        int left_height = 0;
+        int right_height = 0;
+        if (helper(root->left, &left_height) &&
+            helper(root->right, &right_height))
+        {
+            if (abs(left_height - right_height) <= 1)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
 };
