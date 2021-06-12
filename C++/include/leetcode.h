@@ -1,9 +1,9 @@
 #ifndef CPP_LEETCODE_H
 #define CPP_LEETCODE_H
 
-#include "build/googletest-src/googletest/include/gtest/gtest.h"
 
 #include <iostream>
+#include <queue>
 #include <stack>
 #include <vector>
 

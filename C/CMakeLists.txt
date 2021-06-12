@@ -12,7 +12,3 @@ include_directories("${PROJECT_SOURCE_DIR}/include")
 add_executable(leetcode ${DIRSRCS})
 
 target_link_libraries(leetcode)
-
-set(CPACK_PROJECT_NAME ${PROJECT_NAME})
-set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
-include(CPack)
