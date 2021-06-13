@@ -20,11 +20,40 @@ class Solution
 
         return min(helper(root->left), helper(root->right)) + 1;
     }
-    int minDepth(TreeNode *root)
+    int minDepth1(TreeNode *root)
     {
         if (!root)
             return 0;
 
         return helper(root);
+    }
+    int minDepth(TreeNode *root)
+    {
+        if (!root)
+            return 0;
+
+        int min_depth = 0;
+
+        queue<TreeNode *> que;
+        que.push(root);
+
+        while (!que.empty())
+        {
+            min_depth++;
+            int size = que.size();
+            for (int i = 0; i < size; i++)
+            {
+                TreeNode *cur = que.front();
+                que.pop();
+                if (!cur->left && !cur->right)
+                    return min_depth;
+                if (cur->left)
+                    que.push(cur->left);
+                if (cur->right)
+                    que.push(cur->right);
+            }
+        }
+
+        return min_depth;
     }
 };
