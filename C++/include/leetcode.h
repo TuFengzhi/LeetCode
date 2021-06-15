@@ -1,6 +1,7 @@
 #ifndef CPP_LEETCODE_H
 #define CPP_LEETCODE_H
 
+#include <gtest/gtest.h>
 
 #include <iostream>
 #include <queue>
