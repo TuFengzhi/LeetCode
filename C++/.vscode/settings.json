@@ -21,6 +21,8 @@
         "unordered_map": "cpp",
         "unordered_set": "cpp",
         "initializer_list": "cpp",
-        "queue": "cpp"
+        "queue": "cpp",
+        "chrono": "cpp",
+        "limits": "cpp"
     }
 }
