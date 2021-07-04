@@ -15,43 +15,27 @@ class Solution
   public:
     int maxProduct(vector<int> &nums)
     {
-        // int size = nums.size();
-        // int ret[size];
+        int size = nums.size();
 
-        // ret_max[0] = nums[0];
-        // ret_min[0] = nums[0];
+        int last_max = nums[0];
+        int last_min = nums[0];
+        int max_ret = nums[0];
 
-        // int max_ret = ret_max[0];
+        for (int i = 1; i < size; i++)
+        {
+            if (nums[i] < 0)
+            {
+                last_max = last_max ^ last_min;
+                last_min = last_max ^ last_min;
+                last_max = last_max ^ last_min;
+            }
 
-        // for (int i = 1; i < size; i++)
-        // {
-        //     if (nums[i] == 0)
-        //     {
-        //         ret_max[i] = 0;
-        //         ret_min[i] = 0;
-        //     }
-        //     else
-        //     {
-        //         if (ret_max[i - 1] == 0)
-        //         {
-        //             ret_max[0] = nums[i];
-        //             ret_min[0] = nums[i];
-        //         }
-        //         else if (nums[i] > 0)
-        //         {
-        //             retmax[i] = max(nums[i] * ret_max[i - 1], nums[i]);
-        //             retmin[i] = nums[i] * ret_min[i - 1];
-        //         }
-        //         else
-        //         {
-        //             retmax[i] = nums[i] * ret_min[i - 1];
-        //             retmin[i] = min(nums[i] * ret_max[i - 1], nums[i]);
-        //         }
-        //     }
+            last_max = max(nums[i], last_max * nums[i]);
+            last_min = min(nums[i], last_min * nums[i]);
 
-        //     max_ret = max(max_ret, ret_max[i]);
-        // }
+            max_ret = max(max_ret, last_max);
+        }
 
-        // return max_ret;
+        return max_ret;
     }
 };
