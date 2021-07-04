@@ -23,4 +23,16 @@ class Solution
     }
 
     // TODO: Add Divide and Conquer Solution
+    int maxSubArrayDC(vector<int> &nums)
+    {
+        int max_sum = nums[0];
+        int current_sum = 0;
+        for (auto &e : nums)
+        {
+            current_sum = max(current_sum + e, e);
+            max_sum = max(max_sum, current_sum);
+        }
+
+        return max_sum;
+    }
 };
