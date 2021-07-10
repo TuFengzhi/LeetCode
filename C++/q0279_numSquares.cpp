@@ -15,6 +15,21 @@ class Solution
   public:
     int numSquares(int n)
     {
-        // TODO:
+        vector<int> dp(n + 1);
+        dp[0] = 0;
+        dp[1] = 1;
+
+        for (int i = 2; i <= n; i++)
+        {
+            int sqrt_i = sqrt(i);
+            int min_num = INT_MAX;
+            for (int j = 1; j <= sqrt_i; j++)
+            {
+                min_num = min(min_num, 1 + dp[i - j * j]);
+            }
+            dp[i] = min_num;
+        }
+
+        return dp[n];
     }
 };
