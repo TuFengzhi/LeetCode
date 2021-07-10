@@ -15,6 +15,24 @@ class Solution
   public:
     int lengthOfLIS(vector<int> &nums)
     {
-        // TODO:
+        int size = nums.size();
+        int max_ret = 1;
+        vector<pair<int, int>> dp(size);
+
+        dp[0] = make_pair(nums[0], 1);
+
+        for (int i = 1; i < size; i++)
+        {
+            int cur_max = 1;
+            for (int j = 0; j < i; j++)
+            {
+                if (dp[j].first < nums[i])
+                    cur_max = max(cur_max, dp[j].second + 1);
+            }
+            dp[i] = make_pair(nums[i], cur_max);
+            max_ret = max(max_ret, cur_max);
+        }
+
+        return max_ret;
     }
 };
