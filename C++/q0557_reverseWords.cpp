@@ -17,7 +17,13 @@ class Solution
         {
             if (s[i] == ' ')
             {
-                s = reverseWord(s, start, end);
+                while (start < end)
+                {
+                    swap(s[start], s[end]);
+
+                    start++;
+                    end--;
+                }
                 end = start;
                 finish = 1;
             }
@@ -33,19 +39,9 @@ class Solution
             }
         }
 
-        s = reverseWord(s, start, end);
-
-        return s;
-    }
-
-  private:
-    string reverseWord(string s, int start, int end)
-    {
         while (start < end)
         {
-            s[start] = s[start] ^ s[end];
-            s[end] = s[start] ^ s[end];
-            s[start] = s[start] ^ s[end];
+            swap(s[start], s[end]);
 
             start++;
             end--;

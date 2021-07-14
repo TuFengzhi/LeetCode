@@ -24,6 +24,12 @@
         "queue": "cpp",
         "chrono": "cpp",
         "limits": "cpp",
-        "stack": "cpp"
+        "stack": "cpp",
+        "any": "cpp",
+        "*.tcc": "cpp",
+        "memory": "cpp",
+        "fstream": "cpp",
+        "sstream": "cpp",
+        "streambuf": "cpp"
     }
 }
