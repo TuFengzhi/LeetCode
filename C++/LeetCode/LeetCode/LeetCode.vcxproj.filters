@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="pch.cpp" />
+    <ClCompile Include="q0011_maxArea.cpp" />
+    <ClCompile Include="q0014_longestCommonPrefix.cpp" />
+    <ClCompile Include="q0015_threeSum.cpp" />
+    <ClCompile Include="q0026_removeDuplicates.cpp" />
+    <ClCompile Include="q0053_maxSubArray.cpp" />
+    <ClCompile Include="q0062_uniquePaths.cpp" />
+    <ClCompile Include="q0064_minPathSum.cpp" />
+    <ClCompile Include="q0070_climbStairs.cpp" />
+    <ClCompile Include="q0088_merge.cpp" />
+    <ClCompile Include="q0094_inorderTraversal.cpp" />
+    <ClCompile Include="q0096_numTrees.cpp" />
+    <ClCompile Include="q0101_isSymmetric.cpp" />
+    <ClCompile Include="q0108_sortedArrayToBST.cpp" />
+    <ClCompile Include="q0110_isBalanced.cpp" />
+    <ClCompile Include="q0111_minDepth.cpp" />
+    <ClCompile Include="q0112_hasPathSum.cpp" />
+    <ClCompile Include="q0121_maxProfit.cpp" />
+    <ClCompile Include="q0122_maxProfit.cpp" />
+    <ClCompile Include="q0139_wordBreak.cpp" />
+    <ClCompile Include="q0141_hasCycle.cpp" />
+    <ClCompile Include="q0144_preorderTraversal.cpp" />
+    <ClCompile Include="q0145_postorderTraversal.cpp" />
+    <ClCompile Include="q0152_maxProduct.cpp" />
+    <ClCompile Include="q0155_MinStack.cpp" />
+    <ClCompile Include="q0160_getIntersectionNode.cpp" />
+    <ClCompile Include="q0169_majorityElement.cpp" />
+    <ClCompile Include="q0198_rob.cpp" />
+    <ClCompile Include="q0206_reverseList.cpp" />
+    <ClCompile Include="q0221_maximalSquare.cpp" />
+    <ClCompile Include="q0235_lowestCommonAncestor.cpp" />
+    <ClCompile Include="q0279_numSquares.cpp" />
+    <ClCompile Include="q0300_lengthOfLIS.cpp" />
+    <ClCompile Include="q0309_maxProfit.cpp" />
+    <ClCompile Include="q0404_sumOfLeftLeaves.cpp" />
+    <ClCompile Include="q0501_findMode.cpp" />
+    <ClCompile Include="q0530_getMinimumDifference.cpp" />
+    <ClCompile Include="q0543_diameterOfBinaryTree.cpp" />
+    <ClCompile Include="q0557_reverseWords.cpp" />
+    <ClCompile Include="q0563_findTilt.cpp" />
+    <ClCompile Include="q0572_isSubtree.cpp" />
+    <ClCompile Include="q0606_tree2str.cpp" />
+    <ClCompile Include="q0617_mergeTrees.cpp" />
+    <ClCompile Include="q0637_averageOfLevels.cpp" />
+    <ClCompile Include="q0653_findTarget.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="pch.h" />
+  </ItemGroup>
+</Project>
